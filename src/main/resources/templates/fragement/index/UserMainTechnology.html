@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<th:block th:fragment="TechnologyFragment">
+    <section class="page-section bg-light" id="Technology">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">My Technology</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="col-lg-4" id="map" style="width: 400px; height: 400px;"></div>
+                    <button id="base-layer"  class="btn btn-info btn-xs" onclick="baseChange('satellite')"
+                            style="opacity: 70%; background-color: rgb(51, 80, 133);">위성 </button>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

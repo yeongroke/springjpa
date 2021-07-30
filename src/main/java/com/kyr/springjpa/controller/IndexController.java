@@ -3,34 +3,55 @@ package com.kyr.springjpa.controller;
 import com.kyr.springjpa.dto.GuestDto;
 import com.kyr.springjpa.entity.Guest;
 import com.kyr.springjpa.service.GuestService;
+import com.kyr.springjpa.service.OpenLayerService;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @Controller
 public class IndexController {
 
     @Value("${spring.profiles.active}")
     private String profileActive;
 
-    @Autowired
+    @Setter(onMethod_ = @Autowired)
     private GuestService guestService;
+
+    @Setter(onMethod_ = @Autowired)
+    private OpenLayerService openLayerService;
 
     public IndexController(GuestService guestService){
         this.guestService = guestService;
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(HttpServletResponse res , HttpServletRequest req , Model model) {
+        JSONArray jsonarr = new JSONArray();
+
+        try{
+            jsonarr = openLayerService.getAreaJsonData("test1");
+            log.info("json->>" + jsonarr);
+        } catch(Exception e) {
+            log.error("index error -> " , e);
+        }
+
+        model.addAttribute("jsonarr" , jsonarr);
         return "index";
     }
 

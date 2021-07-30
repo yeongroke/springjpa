@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../js/jquery_v3.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        console.log("asdfasdf")
+        $.ajax({
+            type : "POST",
+            data : {
+                "access_token" : "e30abd50-aa1b-4533-9b1d-e56f853e60ed"
+            },
+            contentType : "application / x-www-form-urlencoded; charset = UTF-8",
+            url: "https://www.datastore.or.kr/!api/954a1b75-8deb-4204-b661-5e742aa7ad10/fncfoodtb",
+            success : function(data){
+                console.log(data);
+            },error : function(jqXHR,request, status, error){
+                console.log("error -> " + error);
+            }
+        })
+    });
+</script>
+<body>
+
+</body>
+</html>
