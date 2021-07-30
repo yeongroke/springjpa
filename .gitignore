@@ -5,9 +5,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-.yml
-.properties
-
+*.yml
+*.properties
+!**/src/main/resources/static/img/
 ### STS ###
 .apt_generated
 .classpath
