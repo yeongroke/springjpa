@@ -13,7 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "guest")
+@Table
 @DynamicUpdate
 public class Guest {
 
