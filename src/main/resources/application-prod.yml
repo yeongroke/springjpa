@@ -6,8 +6,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://3.143.102.0:3306/springjpa?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: 12341234
-    password: 123412341234
+    username: root
+    password: test1234
     hikari:
       auto-commit: false
       connection-test-query: SELECT 1
@@ -22,5 +22,14 @@ spring:
     generate-ddl: true
     open-in-view: false
     show-sql: true
+
+
+serverurl:
+  resource:
+    path: http://3.143.102.0:10082
+  request:
+    path: /img_server/**
+
+
 server:
   port: 9000
