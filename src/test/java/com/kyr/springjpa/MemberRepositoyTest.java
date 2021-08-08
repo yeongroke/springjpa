@@ -1,6 +1,6 @@
 package com.kyr.springjpa;
 
-import com.kyr.springjpa.entity.Member;
+import com.kyr.springjpa.model.entity.Member;
 import com.kyr.springjpa.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

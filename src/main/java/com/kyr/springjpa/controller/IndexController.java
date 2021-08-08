@@ -1,7 +1,7 @@
 package com.kyr.springjpa.controller;
 
-import com.kyr.springjpa.dto.GuestDto;
-import com.kyr.springjpa.entity.Guest;
+import com.kyr.springjpa.model.bean.GuestDto;
+import com.kyr.springjpa.model.entity.Guest;
 import com.kyr.springjpa.service.GuestService;
 import com.kyr.springjpa.service.OpenLayerService;
 import lombok.Setter;
@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
