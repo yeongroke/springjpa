@@ -1,6 +1,5 @@
-package com.kyr.springjpa.entity;
+package com.kyr.springjpa.model.entity;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
