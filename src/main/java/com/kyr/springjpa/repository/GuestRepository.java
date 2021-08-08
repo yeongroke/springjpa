@@ -1,6 +1,6 @@
 package com.kyr.springjpa.repository;
 
-import com.kyr.springjpa.entity.Guest;
+import com.kyr.springjpa.model.entity.Guest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

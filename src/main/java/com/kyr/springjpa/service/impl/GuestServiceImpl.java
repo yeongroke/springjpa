@@ -1,7 +1,7 @@
 package com.kyr.springjpa.service.impl;
 
-import com.kyr.springjpa.dto.GuestDto;
-import com.kyr.springjpa.entity.Guest;
+import com.kyr.springjpa.model.bean.GuestDto;
+import com.kyr.springjpa.model.entity.Guest;
 import com.kyr.springjpa.repository.GuestRepository;
 import com.kyr.springjpa.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.kyr.springjpa.service;
 
-import com.kyr.springjpa.dto.GuestDto;
-import com.kyr.springjpa.entity.Guest;
+import com.kyr.springjpa.model.bean.GuestDto;
+import com.kyr.springjpa.model.entity.Guest;
 
 import java.util.List;
 import java.util.Optional;
