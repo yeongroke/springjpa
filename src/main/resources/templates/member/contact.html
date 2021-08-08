@@ -11,7 +11,7 @@
         <div class="input-form-backgroud row">
             <div class="input-form col-md-12 mx-auto">
                 <h4 class="mb-3">회원가입</h4>
-                <form class="validation-form" novalidate>
+                <form class="validation-signup-form" id="validation-signup-form" novalidate>
                     <div class="mb-3">
                         <label for="name">이름</label>
                         <input type="text" class="form-control" id="name" placeholder="" value="" required>
@@ -23,13 +23,13 @@
                         <div class="invalid-feedback"> 이메일을 입력해주세요. </div>
                     </div>
                     <div class="mb-3">
-                        <label for="address2">회사이름</label>
-                        <input type="text" class="form-control" id="address2" placeholder="회사이름을 입력해주세요." required>
+                        <label for="conpany">회사이름</label>
+                        <input type="text" class="form-control" id="conpany" placeholder="회사이름을 입력해주세요." required>
                         <div class="invalid-feedback"> 회사이름을 입력해주세요. </div>
                     </div>
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="aggrement" required>
+                        <input type="checkbox" class="custom-control-input" id="aggrement" name="aggrement" required>
                         <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
                     </div>
                     <div class="mb-4"></div>
@@ -43,5 +43,40 @@
         </footer>
     </div>
 </body>
-<script src="../js/sign.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        const forms = document.getElementsByClassName('validation-signup-form');
+        Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                    if(form.checkValidity() === true) {
+                        var nameval = $("#name").val();
+                        var emailval = $("#email").val();
+                        var conpanyval = $("#conpany").val();
+                        var checkedval = $('#aggrement').is(":checked");
+                        if(checkedval == true){
+                            $.ajax({
+                                type : "post",
+                                data : {
+                                    "email" : emailval,
+                                    "name" : nameval,
+                                    "conpany" : conpanyval
+                                },url: "/member/contact.do",
+                                success : function(data) {
+                                    alert(data);
+                                }
+                            });
+                        } else {
+                            alert("asdfasdf");
+                        }
+                    }
+                },
+                false);
+        });
+    }, false);
+</script>
 </html>
