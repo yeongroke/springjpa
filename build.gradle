@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.kyr'
-version = 'springjpa'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 // lombok 을 사용하기 위해서 아래 부분 선언이 필요함
