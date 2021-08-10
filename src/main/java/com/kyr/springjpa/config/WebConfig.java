@@ -27,8 +27,8 @@ public class WebConfig implements WebMvcConfigurer {
         log.info("resourcesfilepath->" + resourceFilePath);
 
         CacheControl cacheControl = CacheControl
-                .maxAge(60, TimeUnit.SECONDS)
-                .mustRevalidate();
+                .noCache();
+
 
         registry.addResourceHandler("**/*")
                 .addResourceLocations("classpath:/static/")
