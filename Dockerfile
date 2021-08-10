@@ -7,7 +7,7 @@ COPY build.gradle /springjpa
 COPY gradlew /springjpa
 COPY gradlew.bat /springjpa
 
-RUN mvn package -DskipTests
+RUN gradlew bootJar
 
 EXPOSE 8080
 
