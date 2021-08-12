@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,12 @@ public class CustomErrorController extends BasicErrorController {
     }
 
     private void log(HttpServletRequest httpServletRequest) {
-        log.error("error");
+        log.error("error -> error.status - {}" , getStatus(httpServletRequest));
     }
+
+    @Override
+    protected HttpStatus getStatus(HttpServletRequest request) {
+        return super.getStatus(request);
+    }
+
 }
