@@ -29,9 +29,15 @@ public class ServiceAspect implements HandlerInterceptor {
     @Around("execution(* com.kyr.springjpa.service.*.*(..))")
     public Object logging(ProceedingJoinPoint pjp) throws Throwable {
         logger.info("start - " + pjp.getSignature().getDeclaringTypeName() + " / " + pjp.getSignature().getName());
-        Object result = pjp.proceed();
-        logger.info("finished - " + pjp.getSignature().getDeclaringTypeName() + " / " + pjp.getSignature().getName());
-        return result;
+        long start = System.currentTimeMillis();
+        try{
+            return pjp.proceed();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            logger.info("finished - " + pjp.getSignature().getDeclaringTypeName() + " / " + pjp.getSignature().getName());
+            logger.info("Doing Time - " + timeMs/1000 + " Second");
+        }
     }
 
     @Around("execution(* com.kyr.springjpa.controller.*.*(..))")
