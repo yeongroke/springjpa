@@ -21,13 +21,13 @@ public class MemberRepositoyTest {
     @Test
     @Transactional
     public void testmember() throws Exception {
-        Member member = new Member();
+        /*Member member = new Member();
         member.setUsername("test1");
 
         Long memberSaveId = memberRepository.save(member);
         Member findMember = memberRepository.findid(memberSaveId);
 
-        Assertions.assertThat(findMember.getId()).isEqualTo(memberSaveId);
+        Assertions.assertThat(findMember.getId()).isEqualTo(memberSaveId);*/
 
     }
 }

@@ -1,14 +1,10 @@
 package com.kyr.springjpa.repository;
 
 import com.kyr.springjpa.model.bean.MemberDto;
-import com.kyr.springjpa.model.entity.Guest;
 import com.kyr.springjpa.model.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
 @Repository
