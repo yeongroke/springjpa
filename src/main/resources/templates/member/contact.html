@@ -10,7 +10,7 @@
     <div class="container">
         <div class="input-form-backgroud row">
             <div class="input-form col-md-12 mx-auto">
-                <h4 class="mb-3">회원가입</h4>
+                <h4 class="mb-3">Contact roki</h4>
                 <form class="validation-signup-form" id="validation-signup-form" novalidate>
                     <div class="mb-3">
                         <label for="name">이름</label>
@@ -29,8 +29,8 @@
                     </div>
                     <hr class="mb-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="aggrement" name="aggrement" required>
-                        <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                        <input type="checkbox" class="custom-control-input" id="aggrement" name="aggrement" required>개인정보 수집 및 이용에 동의합니다.
+                        <label class="invalid-feedback" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
                     </div>
                     <div class="mb-4"></div>
                     <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
@@ -61,17 +61,26 @@
                         if(checkedval == true){
                             $.ajax({
                                 type : "post",
+                                async: false,
                                 data : {
                                     "email" : emailval,
                                     "name" : nameval,
                                     "conpany" : conpanyval
                                 },url: "/member/contact.do",
                                 success : function(data) {
-                                    alert(data);
+                                    if(data == 1){
+                                        swal("연락처를 남겼습니다.");
+                                        swal({
+                                            title: "Thank You",
+                                            text: "thank you for contacting me",
+                                            icon: "success",
+                                            button: "OK",
+                                        });
+                                    }
                                 }
                             });
                         } else {
-                            alert("asdfasdf");
+                            swal("개인정보 동의해주시길 바라겠습니다.");
                         }
                     }
                 },
