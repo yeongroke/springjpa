@@ -19,7 +19,7 @@ public class MemberServiceimpl implements MemberService {
     private MemberRepository memberRepository;
 
     @Override
-    public Boolean memberSignUp(MemberDto memberDto) {
+    public Long memberSignUp(MemberDto memberDto) {
 
         Member member = Member.builder()
                 .email(memberDto.getEmail())
@@ -30,11 +30,7 @@ public class MemberServiceimpl implements MemberService {
 
         MemberDto saveMember = findByMemberId(saveMemberId);
 
-        if(saveMember == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return saveMember.getId();
     }
 
     @Override

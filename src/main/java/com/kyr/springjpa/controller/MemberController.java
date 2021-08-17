@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +34,11 @@ public class MemberController {
     }
 
     @PostMapping("contact.do")
-    public Boolean contactdo(HttpServletResponse res , HttpServletRequest req ,
-                               @RequestParam(name = "email" , defaultValue = "", required = false) String email ,
-                               @RequestParam(name = "name" , defaultValue = "", required = false) String name ,
-                               @RequestParam(name = "conpany" , defaultValue = "", required = false) String conpany){
+    public ResponseEntity<Integer> contactdo(HttpServletResponse res , HttpServletRequest req ,
+                                             @RequestParam(name = "email" , defaultValue = "", required = false) String email ,
+                                             @RequestParam(name = "name" , defaultValue = "", required = false) String name ,
+                                             @RequestParam(name = "conpany" , defaultValue = "", required = false) String conpany){
         log.info("contactdo -> " + email + "==" + name + "==" + conpany);
-        Boolean saveFlag = false;
 
         MemberDto memberDto = new MemberDto();
 
@@ -45,9 +46,11 @@ public class MemberController {
         memberDto.setUsername(name);
         memberDto.setConpany(conpany);
 
-        saveFlag = memberService.memberSignUp(memberDto);
-
-        return saveFlag;
+        Long saveMemberId = memberService.memberSignUp(memberDto);
+        if(memberService.findByMemberId(saveMemberId).getId() != saveMemberId) {
+            return new ResponseEntity<>(-1 , HttpStatus.OK);
+        }
+        return new ResponseEntity<>(1 , HttpStatus.OK);
     }
 
     @GetMapping("signin")
