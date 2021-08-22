@@ -6,9 +6,9 @@ COPY src /springjpa/src
 COPY build.gradle /springjpa
 COPY gradlew /springjpa
 COPY gradlew.bat /springjpa
-
-RUN gradlew bootJar
+RUN chmod -x ./gradlew
+RUN ./gradlew clean build
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","target/springjpa-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","target/springjpa.jar"]
