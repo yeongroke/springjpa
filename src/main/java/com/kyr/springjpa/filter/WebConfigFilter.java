@@ -32,7 +32,6 @@ public class WebConfigFilter implements Filter {
                 , servletRequest.getContentType()
                 , servletRequest.getServletContext().getContextPath());
 
-
         HttpServletResponse httpResp = (HttpServletResponse) servletResponse;
 
         httpResp.setHeader("Access-Control-Allow-Origin", "*"); //허용대상 도메인

@@ -16,13 +16,16 @@ spring:
       transaction-isolation: TRANSACTION_READ_UNCOMMITTED
       pool-name: pool-yrkim
   jpa:
-    properties:
-      hibernate:
-        format_sql: true
-    generate-ddl: true
-    open-in-view: false
-    show-sql: true
+    hibernate:
+      ddl-auto: none
+      jdbc:
+        time_zone: Asia/Seoul
 
+
+logging:
+  level: debug
+  file:
+    name: D:/springjpa_log/spring_log.log
 
 serverurl:
   resource:
@@ -30,6 +33,14 @@ serverurl:
   request:
     path: /img_server/**
 
-
 server:
+  compression:
+    enabled: true
+  error:
+    include-exception: true
+    include-stacktrace: always
+    whitelabel:
+      enabled: true
+  servlet:
+    context-path: /
   port: 9000
