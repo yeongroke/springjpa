@@ -23,7 +23,7 @@ import java.util.Map;
 @Slf4j
 @Aspect
 @Component
-public class ServiceAspect implements HandlerInterceptor {
+public class ServiceAspect {
     private static final Logger logger = LoggerFactory.getLogger(ServiceAspect.class);
 
     @Around("execution(* com.kyr.springjpa.service.*.*(..))")
@@ -60,27 +60,5 @@ public class ServiceAspect implements HandlerInterceptor {
         Object result = pjp.proceed();
 
         return result;
-    }
-
-
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-        HttpSession session = request.getSession();
-
-        return true;
-
-    }
-
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-                           ModelAndView modelAndView) throws Exception {
-
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {
-
     }
 }
