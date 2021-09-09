@@ -23,9 +23,13 @@ spring:
 
 
 logging:
-  level: debug
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+    org.apache.tomcat: info
+    com.kry.springjpa: trace
   file:
-    name: D:/springjpa_log/spring_log.log
+    name: D:/springjpa_log/springjpa_log.log
 
 serverurl:
   resource:
