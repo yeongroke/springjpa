@@ -8,7 +8,7 @@ $.ajaxSetup({
 
         switch (xhr.status) {
             case 403:
-                window.location = '/signIn';
+                window.location = '/';
                 break;
             default :
                 console.log("xhr", xhr);
