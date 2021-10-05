@@ -17,10 +17,12 @@ spring:
       pool-name: pool-yrkim
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       jdbc:
         time_zone: Asia/Seoul
-
+    show-sql: true
 
 logging:
   level:
