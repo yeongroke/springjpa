@@ -14,13 +14,18 @@
                 <form class="validation-signup-form" id="validation-signup-form" novalidate>
                     <div class="mb-3">
                         <label for="name">이름</label>
-                        <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="name" placeholder="" value="" maxlength="15" required>
                         <div class="invalid-feedback"> 이름을 입력해주세요. </div>
                     </div>
                     <div class="mb-3">
                         <label for="email">이메일</label>
                         <input type="email" class="form-control" id="email" placeholder="your@example.com" required>
                         <div class="invalid-feedback"> 이메일을 입력해주세요. </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd">비밀번호</label>
+                        <input type="password" class="form-control" id="pwd" maxlength="21" required>
+                        <div class="invalid-feedback"> 비밀번호를 입력해주세요. </div>
                     </div>
                     <div class="mb-3">
                         <label for="conpany">회사이름</label>
@@ -54,33 +59,29 @@
                     }
                     form.classList.add('was-validated');
                     if(form.checkValidity() === true) {
-                        var nameval = $("#name").val();
-                        var emailval = $("#email").val();
-                        var conpanyval = $("#conpany").val();
-                        var checkedval = $('#aggrement').is(":checked");
-                        if(checkedval == true){
+                        const nameVal = $("#name").val();
+                        const emailVal = $("#email").val();
+                        const pwdVal = $("#email").val();
+                        const conpanyVal = $("#conpany").val();
+                        const checkedVal = $('#aggrement').is(":checked");
+                        if(checkedVal == true){
                             $.ajax({
                                 type : "post",
                                 async: false,
                                 data : {
-                                    "email" : emailval,
-                                    "name" : nameval,
-                                    "conpany" : conpanyval
+                                    "name" : nameVal,
+                                    "email" : emailVal,
+                                    "pwd" : pwdVal,
+                                    "conpany" : conpanyVal
                                 },url: "/member/contact.do",
                                 success : function(data) {
                                     if(data == 1){
-                                        swal("연락처를 남겼습니다.");
-                                        swal({
-                                            title: "Thank You",
-                                            text: "thank you for contacting me",
-                                            icon: "success",
-                                            button: "OK",
-                                        });
+                                        alert("연락처를 남겼습니다.");
                                     }
                                 }
                             });
                         } else {
-                            swal("개인정보 동의해주시길 바라겠습니다.");
+                            alert("개인정보 동의해주시길 바라겠습니다.");
                         }
                     }
                 },
