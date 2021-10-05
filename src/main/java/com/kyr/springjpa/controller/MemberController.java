@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 @Slf4j
 @Controller
@@ -35,8 +34,9 @@ public class MemberController {
 
     @PostMapping("contact.do")
     public ResponseEntity<Integer> contactdo(HttpServletResponse res , HttpServletRequest req ,
-                                             @RequestParam(name = "email" , defaultValue = "", required = false) String email ,
                                              @RequestParam(name = "name" , defaultValue = "", required = false) String name ,
+                                             @RequestParam(name = "email" , defaultValue = "", required = false) String email ,
+                                             @RequestParam(name = "pwd" , defaultValue = "", required = false) String pwd ,
                                              @RequestParam(name = "conpany" , defaultValue = "", required = false) String conpany){
         log.info("contactdo -> " + email + "==" + name + "==" + conpany);
 
@@ -45,6 +45,7 @@ public class MemberController {
         memberDto.setEmail(email);
         memberDto.setUsername(name);
         memberDto.setConpany(conpany);
+        memberDto.setPassword(pwd);
 
         Long saveMemberId = memberService.memberSignUp(memberDto);
         if(memberService.findByMemberId(saveMemberId).getId() != saveMemberId) {

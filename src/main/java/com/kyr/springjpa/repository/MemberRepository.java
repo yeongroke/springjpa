@@ -12,6 +12,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Member save(Member member);
 
-    @Query(value = "SELECT new com.kyr.springjpa.model.bean.MemberDto(m.id , m.username , m.email , m.conpany) FROM Member m WHERE m.id = :id")
+    @Query(value = "SELECT m.id , m.username , m.email , m.conpany FROM Member m WHERE m.id = :id")
     Optional<MemberDto> findByMemberid(Long id);
 }

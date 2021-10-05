@@ -3,6 +3,7 @@ package com.kyr.springjpa.model.bean;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 
 @Setter
 @Getter
@@ -19,5 +20,11 @@ public class MemberDto {
     private String email;
 
     @NotNull
+    private String password;
+
+    @NotNull
     private String conpany;
+
+    @NotNull
+    private Timestamp registerDate;
 }
