@@ -43,6 +43,8 @@
                     }
                     form.classList.add('was-validated');
                     if(form.checkValidity() === true) {
+                        const nameVal = $("#name").val();
+                        const pwdVal = $("#pwd").val();
                         $.ajax({
                             type : "post",
                             data : {
