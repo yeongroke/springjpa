@@ -6,12 +6,17 @@ import com.kyr.springjpa.service.MemberService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Setter(onMethod_ = @Autowired)
@@ -20,13 +25,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/member/signin").authenticated()
-                .antMatchers("/member/contact").hasRole(Auth.ADMIN.name())
-                .anyRequest().permitAll()
+                //.antMatchers("/user/contact").hasRole(Auth.ADMIN.name())
+                //.antMatchers("/prod/contact").hasRole(Auth.OPERATOR.name())
+                //.antMatchers(HttpMethod.POST,"/api/**").permitAll()
+                .antMatchers("/member/contact", "/member/signin", "/index").permitAll()
+                //.antMatchers("/**").authenticated()
             .and()
                 .formLogin()
-                .loginPage("/member/signin.html")
-                .defaultSuccessUrl("/member/signin")
+                .loginPage("/member/signin")
+                .defaultSuccessUrl("/index")
                 .failureForwardUrl("/member/signin")
                 .usernameParameter("username")
             .and()
