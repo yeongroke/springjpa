@@ -35,10 +35,6 @@ public class IndexController {
     @Setter(onMethod_ = @Autowired)
     private OpenLayerService openLayerService;
 
-    public IndexController(GuestService guestService){
-        this.guestService = guestService;
-    }
-
     @GetMapping("/")
     public String index(HttpServletResponse res , HttpServletRequest req , Model model) {
         JSONArray jsonarr = new JSONArray();
