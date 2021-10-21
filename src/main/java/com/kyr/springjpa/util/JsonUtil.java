@@ -11,6 +11,7 @@ import java.util.Iterator;
 
 @Slf4j
 public class JsonUtil {
+
     public JsonUtil(){
 
     }
@@ -20,14 +21,14 @@ public class JsonUtil {
             try {
                 fileInputStream.close();
             } catch (IOException e) {
-                log.error("fileInputStream not close : {}" , e.getStackTrace());
+                log.error("fileInputStream not close : {}" , e);
             }
         }
         if (bufferedReader != null) {
             try {
                 bufferedReader.close();
             } catch (IOException e) {
-                log.error("bufferedReader not close : {}" , e.getStackTrace());
+                log.error("bufferedReader not close : {}" , e);
             }
         }
     }
@@ -53,7 +54,7 @@ public class JsonUtil {
                 jsonObject = (JSONObject) jsonParser.parse(inputJsonData);
             }
         } catch (Exception e) {
-            log.error("can not read this file | filePath : {} | date : {} | error : {}" , filePath , date , e.getStackTrace());
+            log.error("can not read this file | filePath : {} | date : {} | error : {}" , filePath , date , e);
         } finally {
             closeInputStream(fileInputStream,bufferedReader);
         }

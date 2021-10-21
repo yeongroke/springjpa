@@ -1,6 +1,6 @@
 package com.kyr.springjpa.service.impl;
 
-import com.kyr.springjpa.model.bean.GuestDto;
+import com.kyr.springjpa.model.bean.GuestDTO;
 import com.kyr.springjpa.model.entity.Guest;
 import com.kyr.springjpa.repository.GuestRepository;
 import com.kyr.springjpa.service.GuestService;
@@ -39,7 +39,7 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public Guest save(GuestDto guestDto) {
+    public Guest save(GuestDTO guestDto) {
         Guest guest = new Guest();
 
         guest.setName(guestDto.getName());

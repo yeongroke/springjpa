@@ -1,11 +1,10 @@
 package com.kyr.springjpa.service;
 
 
-import com.kyr.springjpa.model.bean.MemberDto;
-import com.kyr.springjpa.model.entity.Member;
+import com.kyr.springjpa.model.bean.MemberDTO;
 
 public interface MemberService {
-    Long memberSignUp(MemberDto memberDto);
+    Long memberSignUp(MemberDTO memberDto);
 
-    MemberDto findByMemberId(Long id);
+    MemberDTO findByMemberId(Long id);
 }

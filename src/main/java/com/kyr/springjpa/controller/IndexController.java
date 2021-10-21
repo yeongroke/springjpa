@@ -1,6 +1,6 @@
 package com.kyr.springjpa.controller;
 
-import com.kyr.springjpa.model.bean.GuestDto;
+import com.kyr.springjpa.model.bean.GuestDTO;
 import com.kyr.springjpa.model.entity.Guest;
 import com.kyr.springjpa.service.GuestService;
 import com.kyr.springjpa.service.OpenLayerService;
@@ -84,7 +84,7 @@ public class IndexController {
     public Map<String, Object> saveGuest() {
         Map<String, Object> response = new HashMap<>();
 
-        GuestDto guestDto = new GuestDto();
+        GuestDTO guestDto = new GuestDTO();
         guestDto.setName("test2");
         guestDto.setEmail("test2@test.com");
         guestDto.setPassword("test2");

@@ -1,10 +1,9 @@
 package com.kyr.springjpa.controller;
 
-import com.kyr.springjpa.model.bean.MemberDto;
+import com.kyr.springjpa.model.bean.MemberDTO;
 import com.kyr.springjpa.service.MemberService;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,7 +38,7 @@ public class MemberController {
                                              @RequestParam(name = "conpany" , defaultValue = "", required = false) String conpany){
         log.info("contactdo -> " + email + "==" + name + "==" + conpany);
 
-        MemberDto memberDto = new MemberDto();
+        MemberDTO memberDto = new MemberDTO();
 
         memberDto.setEmail(email);
         memberDto.setUsername(name);
@@ -61,11 +59,11 @@ public class MemberController {
     }
 
     @PostMapping("signin.do")
-    public JSONObject signindo(HttpServletResponse res , HttpServletRequest req ,
-                               @RequestParam(value = "email" , defaultValue = "", required = false) String email ,
-                               @RequestParam(value = "name" , defaultValue = "", required = false) String name){
-        JSONObject jsonObject = new JSONObject();
+    public ResponseEntity<Integer> signindo(HttpServletResponse res , HttpServletRequest req ,
+                        @RequestParam(value = "email" , defaultValue = "", required = false) String email ,
+                        @RequestParam(value = "pwd" , defaultValue = "", required = false) String pwd){
 
-        return jsonObject;
+
+        return new ResponseEntity<>(1,HttpStatus.OK);
     }
 }

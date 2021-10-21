@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberDto {
+public class MemberDTO {
 
     private Long id;
 

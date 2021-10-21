@@ -1,6 +1,6 @@
 package com.kyr.springjpa.service;
 
-import com.kyr.springjpa.model.bean.GuestDto;
+import com.kyr.springjpa.model.bean.GuestDTO;
 import com.kyr.springjpa.model.entity.Guest;
 
 import java.util.List;
@@ -13,5 +13,5 @@ public interface GuestService {
 
     void deleteById(Long id);
 
-    <S extends Guest> S save(GuestDto guestDto);
+    <S extends Guest> S save(GuestDTO guestDto);
 }

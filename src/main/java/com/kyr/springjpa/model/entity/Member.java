@@ -1,7 +1,6 @@
 package com.kyr.springjpa.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.kyr.springjpa.model.bean.MemberDto;
 import com.kyr.springjpa.util.ValidationPattern;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
