@@ -1,11 +1,11 @@
 package com.kyr.springjpa.service;
 
-import org.json.simple.JSONArray;
+import com.google.gson.JsonArray;
 
 public interface OpenLayerService {
-    JSONArray getAreaCodeData(String dataType) throws Exception;
+    JsonArray getAreaCodeData(String dataType) throws Exception;
 
-    JSONArray getAreaJsonData(String dataType) throws Exception;
+    JsonArray getAreaJsonData(String dataType) throws Exception;
 
     String getBase64Img(String dataType) throws Exception;
 }

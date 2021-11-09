@@ -14,8 +14,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import javax.imageio.ImageIO;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 
 
@@ -41,9 +41,9 @@ public class OpenLayerServiceImpl extends ViewTypeConfig implements OpenLayerSer
     }
 
     @Override
-    public JSONArray getAreaCodeData(String dataType) {
-        JSONObject jsonobj = new JSONObject();
-        JSONArray jsonarr = new JSONArray();
+    public JsonArray getAreaCodeData(String dataType) {
+        JsonObject jsonobj = new JsonObject();
+        JsonArray jsonarr = new JsonArray();
         FileInputStream fis = null;
         BufferedReader rd = null;
         try {
@@ -56,13 +56,13 @@ public class OpenLayerServiceImpl extends ViewTypeConfig implements OpenLayerSer
                 String[] data = line.split("\\s,");
                 for (int i = 0; i < data.length; i++) {
                     if (i == 0) {
-                        jsonobj.put("KONAME", data[i]);
+                        jsonobj.addProperty("KONAME", data[i]);
                     } else {
-                        jsonobj.put("data", data[i]);
+                        jsonobj.addProperty("data", data[i]);
                     }
                 }
                 jsonarr.add(jsonobj);
-                jsonobj = new JSONObject();
+                jsonobj = new JsonObject();
             }
         } catch (final Exception e) {
             log.error("not read json file " + dataType + "->" + e);
@@ -73,9 +73,9 @@ public class OpenLayerServiceImpl extends ViewTypeConfig implements OpenLayerSer
     }
 
     @Override
-    public JSONArray getAreaJsonData(String dataType) {
-        JSONObject jsonobj = new JSONObject();
-        JSONArray jsonarr = new JSONArray();
+    public JsonArray getAreaJsonData(String dataType) {
+        JsonObject jsonobj = new JsonObject();
+        JsonArray jsonarr = new JsonArray();
         FileInputStream fis = null;
         BufferedReader rd = null;
         try {
@@ -89,21 +89,21 @@ public class OpenLayerServiceImpl extends ViewTypeConfig implements OpenLayerSer
                 String[] data = line.split("\\s,");
                 for (int i = 0; i < data.length; i++) {
                     if (i == 0) {
-                        jsonobj.put("KONAME", data[i]);
+                        jsonobj.addProperty("KONAME", data[i]);
                     } else if(i == 1) {
-                        jsonobj.put("Lon", data[i]);
+                        jsonobj.addProperty("Lon", data[i]);
                     } else if(i == 2) {
-                        jsonobj.put("Lat", data[i]);
+                        jsonobj.addProperty("Lat", data[i]);
                     } else if(i == 3) {
-                        jsonobj.put("Sensor", data[i]);
+                        jsonobj.addProperty("Sensor", data[i]);
                     } else if(i == 4) {
-                        jsonobj.put("NickName", data[i]);
+                        jsonobj.addProperty("NickName", data[i]);
                     } else if(i == 5) {
-                        jsonobj.put("Altitude", data[i]);
+                        jsonobj.addProperty("Altitude", data[i]);
                     }
                 }
                 jsonarr.add(jsonobj);
-                jsonobj = new JSONObject();
+                jsonobj = new JsonObject();
             }
         } catch (Exception e) {
             log.error("not read json file " + dataType + "->" + e);

@@ -1,12 +1,12 @@
 package com.kyr.springjpa.controller;
 
+import com.google.gson.JsonArray;
 import com.kyr.springjpa.model.bean.GuestDTO;
 import com.kyr.springjpa.model.entity.Guest;
 import com.kyr.springjpa.service.GuestService;
 import com.kyr.springjpa.service.OpenLayerService;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -37,7 +37,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(HttpServletResponse res , HttpServletRequest req , Model model) {
-        JSONArray jsonarr = new JSONArray();
+        JsonArray jsonarr = new JsonArray();
 
         try{
             jsonarr = openLayerService.getAreaJsonData("test1");

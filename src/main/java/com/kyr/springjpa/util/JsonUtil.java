@@ -1,9 +1,9 @@
 package com.kyr.springjpa.util;
 
+import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Iterator;
@@ -33,8 +33,8 @@ public class JsonUtil {
         }
     }
 
-    public static JSONObject readFileToJsonObjectData(String filePath, String date){
-        JSONObject jsonObject = new JSONObject();
+    public static JsonObject readFileToJsonObjectData(String filePath, String date){
+        JsonObject jsonObject = new JsonObject();
         FileInputStream fileInputStream = null;
         BufferedReader bufferedReader = null;
         try {
@@ -50,8 +50,7 @@ public class JsonUtil {
                     inputJsonData += readJsonData;
                 }
 
-                JSONParser jsonParser = new JSONParser();
-                jsonObject = (JSONObject) jsonParser.parse(inputJsonData);
+                jsonObject = (JsonObject) JsonParser.parseString(inputJsonData);
             }
         } catch (Exception e) {
             log.error("can not read this file | filePath : {} | date : {} | error : {}" , filePath , date , e);
@@ -61,11 +60,11 @@ public class JsonUtil {
         return jsonObject;
     }
 
-    private static String searchContainManyObjectKey(JSONObject jsonObject , String[] keySet){
+    private static String searchContainManyObjectKey(JsonObject jsonObject , String[] keySet){
         int jsonObjectSize = 0;
         String returnContainManyObjectKey = "";
         for(String key : keySet){
-            JSONArray jsonArray = (JSONArray) jsonObject.get(key);
+            JsonArray jsonArray = (JsonArray) jsonObject.get(key);
             if(jsonArray.size() > jsonObjectSize) {
                 jsonObjectSize = jsonArray.size();
                 returnContainManyObjectKey = key;
@@ -74,13 +73,13 @@ public class JsonUtil {
         return returnContainManyObjectKey;
     }
 
-    public static JSONArray getJsonArrayFromJsonObject(JSONObject jsonObject , String key) {
-        JSONArray jsonArray = (JSONArray) jsonObject.get(key);
+    public static JsonArray getJsonArrayFromJsonObject(JsonObject jsonObject , String key) {
+        JsonArray jsonArray = (JsonArray) jsonObject.get(key);
 
         return jsonArray;
     }
 
-    public static String[] getJsonObjectKeySetStringArray(JSONObject jsonObject) {
+    public static String[] getJsonObjectKeySetStringArray(JsonObject jsonObject) {
         Iterator jsonObjectKey = jsonObject.keySet().iterator();
         StringBuilder stringBuilder = new StringBuilder();
         while(jsonObjectKey.hasNext()){
