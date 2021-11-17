@@ -1,4 +1,4 @@
-FROM gradle:jdk11
+FROM gradle:7-jdk11
 
 WORKDIR /springjpa
 RUN mkdir /springjpa/build
